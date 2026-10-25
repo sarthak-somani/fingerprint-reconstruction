@@ -1,0 +1,73 @@
+{
+  "batches": 20,
+  "batch_size": 32,
+  "device": "cuda",
+  "data_version": "v3",
+  "l_diff_mean": 1.0225794672966004,
+  "mean_n_gated": 23.95,
+  "terms": {
+    "cldice": {
+      "raw_mean_over_gated": 0.5452405154705048,
+      "lam_for_20_percent": 0.38
+    },
+    "cv_edge": {
+      "raw_mean_over_gated": 0.7819991767406463,
+      "lam_for_20_percent": 0.26
+    },
+    "cv_mix": {
+      "raw_mean_over_gated": 0.8483069509267807,
+      "lam_for_20_percent": 0.24
+    }
+  },
+  "all_finite": true,
+  "sec_per_step": 3.1740524053573607,
+  "aux_losses": {
+    "cldice": null,
+    "cv_edge": null,
+    "cv_mix": {
+      "lam": null,
+      "alpha": 0.84
+    }
+  },
+  "aux": {
+    "dilate_px": 4,
+    "eta_max": 0.5,
+    "cldice_tau": 0.05,
+    "cldice_iters": 4,
+    "_note": "E07/E08's terms and gate (fpr.training.aux_losses). lam null = set by train.py --calibrate 20 (calibration.json) so each term is ~20% of L_diff at init, as E07 and E08 did; their lams (clDice 0.19, edge 0.27, mix 0.12) were calibrated on raw prints, and normalised prints have different contrast"
+  },
+  "first_batch_sample_ids": [
+    "00002583_V_500_roll_05_sanitizer_0",
+    "00002557_V_500_roll_07_mehendi_1",
+    "00002640_U_500_roll_04_lotion_1",
+    "00002325_U_500_roll_04_scar_1",
+    "00002402_L_500_plain_10_oil_2",
+    "00002502_U_500_roll_06_sanitizer_0",
+    "00002454_M_500_plain_03_oil_0",
+    "00002542_M_500_plain_06_lotion_0",
+    "00002494_U_500_roll_01_sanitizer_1",
+    "00002456_V_500_roll_08_oil_2",
+    "00002644_K_500_plain_04_mehendi_1",
+    "00002381_M_500_plain_02_scar_2",
+    "00002370_M_500_plain_09_mehendi_0",
+    "00002489_L_500_plain_10_mehendi_0",
+    "00002439_U_500_roll_01_sanitizer_1",
+    "00002448_V_500_roll_03_pressure_2",
+    "00002614_L_500_plain_07_mehendi_0",
+    "00002640_M_500_plain_05_sanitizer_0",
+    "00002559_L_500_plain_07_scar_0",
+    "00002640_V_500_roll_10_pressure_2",
+    "00002575_M_500_plain_10_scar_1",
+    "00002633_U_500_roll_01_pressure_1",
+    "00002445_U_500_roll_07_scar_0",
+    "00002328_L_500_plain_06_mehendi_1",
+    "00002537_U_500_roll_10_oil_1",
+    "00002329_M_500_plain_04_sanitizer_1",
+    "00002328_M_500_plain_09_mehendi_2",
+    "00002437_U_500_roll_06_sanitizer_0",
+    "00002534_K_500_plain_05_sanitizer_0",
+    "00002337_U_500_roll_03_mehendi_0",
+    "00002448_U_500_roll_10_sanitizer_2",
+    "00002325_U_500_roll_10_scar_2"
+  ]
+}

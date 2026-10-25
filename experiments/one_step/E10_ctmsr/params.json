@@ -1,0 +1,39 @@
+{
+  "method": "CTMSR Stage 1 (You et al., ICCV 2025): consistency training on a ResShift-style residual trajectory, one-step inference, no teacher",
+  "consistency": {
+    "sigma_max": 1.0,
+    "s0": 4,
+    "s1": 3,
+    "_source": "authors' options/train/ctmsr_train.yml: sigma 0..1 and alpha 0..1 linear (noise_rho = res_rho = 1), steps curriculum 4 -> 3; preconditioning sigma_data 0.5 (edm_unet_arch.py)"
+  },
+  "model": {
+    "cond_channels": 4,
+    "base_channels": 32,
+    "channel_mults": [1, 2, 4, 5],
+    "res_blocks": 2,
+    "attention_resolutions": [16],
+    "groups": 8,
+    "_inputs": "E02's U-Net and inputs, for a fair comparison: x_t (1) + cond: damaged print, mask, cos 2theta, sin 2theta (4); time input 1000 sigma. The paper uses a pixel-unshuffle Swin U-Net."
+  },
+  "training": {
+    "steps": 50000,
+    "batch_size": 32,
+    "lr": 0.0001,
+    "betas": [0.9, 0.9],
+    "grad_clip": 1.0,
+    "ema_decay": 0.999,
+    "amp": true,
+    "workers": 8,
+    "seed": 0,
+    "log_every": 100,
+    "checkpoint_every": 5000,
+    "val_patches": 256,
+    "data": "FixedTrainDataset (v2)",
+    "_deviations": "paper: 500K iterations at fixed lr 5e-5 (code: AdamW betas 0.9/0.9, EMA 0.999). Here 50k at lr 1e-4 and grad clip 1 (E02's; not in the paper) as a safety net for an unattended run."
+  },
+  "inference": {
+    "checkpoint": "checkpoints/last.pt",
+    "tile_batch": 64,
+    "seed": 0
+  }
+}

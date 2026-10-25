@@ -1,0 +1,15 @@
+{
+ "experiment": "E02_resshift",
+ "device": "cuda",
+ "device_name": "NVIDIA A40",
+ "n_prints": 50,
+ "warmup": 3,
+ "seconds_median": 0.855155983241275,
+ "seconds_p90": 1.2794613527599723,
+ "seconds_mean": 0.8951947816926986,
+ "peak_gpu_mb": 678.1044921875,
+ "peak_ram_mb": 1043.30859375,
+ "parameters": 8103937,
+ "date": "2026-10-23 13:27",
+ "host": "cn29-a40.prajna.iitb.ac.in"
+}

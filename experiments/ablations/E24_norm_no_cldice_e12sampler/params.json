@@ -1,0 +1,49 @@
+{
+  "method": "E13_norm_no_cldice's trained model (E12_norm_ccdf_cldice_cv without the clDice term, normalised v3), sampled with E12's selected CCDF configuration, fixed (one-call start, t0 = 2, no projection). No retraining, no sweep",
+  "_ablation": "sampler-controlled loss ablation of E12: the network weights are E13_norm_no_cldice's; the sampler configuration is E12's selected.json, so the only difference from E12 is the training loss (E13_norm_no_cldice's own val sweep picked the plain 15-step chain, which confounded E13_norm_no_cldice vs E12)",
+  "data_version": "v3",
+  "output_normalized": true,
+  "_normalization": "every image the model sees (train, val, test) is fpr.data.normalization.normalize()d: train/val from script 10's copies, repair normalises its input on the fly. Its output is a normalised print, evaluated as stored against the normalised original and gallery (evaluate.py --rec-normalized, set by run_eval.py from output_normalized)",
+  "diffusion": {
+    "steps": 15,
+    "kappa": 2.0,
+    "min_noise": 0.04,
+    "sqrt_eta_end": 0.99,
+    "power": 0.3,
+    "mask_loss_weight": 1.0,
+    "_source": "E02's (ResShift's 15-step config)"
+  },
+  "model": {
+    "cond_channels": 4,
+    "base_channels": 32,
+    "channel_mults": [
+      1,
+      2,
+      4,
+      5
+    ],
+    "res_blocks": 2,
+    "attention_resolutions": [
+      16
+    ],
+    "groups": 8,
+    "_inputs": "x_t (1) + cond: normalised damaged print, mask, cos 2theta, sin 2theta (4)"
+  },
+  "source": {
+    "experiment": "E13_norm_no_cldice",
+    "aux_losses": {
+      "cv_edge": 0.26,
+      "cv_mix": {
+        "lam": 0.24,
+        "alpha": 0.84
+      }
+    }
+  },
+  "inference": {
+    "checkpoint": "experiments/ablations/E13_norm_no_cldice/checkpoints/last.pt",
+    "selected": "selected.json",
+    "tile_batch": 64,
+    "seed": 0,
+    "_note": "checkpoint is relative to the repo root (E13_norm_no_cldice's EMA weights at step 100,000); selected.json = E12's selected configuration"
+  }
+}

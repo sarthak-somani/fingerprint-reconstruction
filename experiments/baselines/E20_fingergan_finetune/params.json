@@ -1,0 +1,35 @@
+{
+  "method": "FingerGAN generator (Zhu, Yin & Hu, TPAMI 2023) fine-tuned from the released weights on our MSU-normalised damaged -> clean pairs (v3), non-adversarial (L1 + clDice)",
+  "data_version": "v3",
+  "output_normalized": true,
+  "_normalization": "input = normalize(degraded) /255; target = the normalised clean print /255 (the generator's sigmoid range), so the output is a normalised print, measured as stored (evaluate.py --rec-normalized)",
+  "weights": "weights/FingerGAN_25850831.tar",
+  "_weights": "the starting point, relative to experiments/baselines/E03_fingergan/",
+  "window": 192,
+  "step": 10,
+  "batch": 48,
+  "invert": false,
+  "_inference": "window, step, batch as E03 (the authors' defaults)",
+  "training": {
+    "steps": 6000,
+    "batch_size": 16,
+    "windows_per_sample": 2,
+    "lr": 0.00005,
+    "warmup_steps": 200,
+    "grad_clip": 1.0,
+    "lam_cldice": 0.1,
+    "dilate_px": 4,
+    "workers": 16,
+    "seed": 0,
+    "log_every": 50,
+    "checkpoint_every": 1000,
+    "val_patches": 128,
+    "data": "E19's NormPairs at 192 px: FixedTrainDataset(normalized=True) windows on v3 (113,544 samples), centred on damage 90% of the time",
+    "_why": "no discriminator was released, so no adversarial term; L1 pulls the output into the normalised-print domain the evaluator compares, clDice (E07's cldice_term, inside the dilated mask, weight 0.1) asks for connected ridges in the damage. lr 5e-5: a small step from the released weights; 6k steps x 16 windows = 96k windows, under one pass of the train set"
+  },
+  "inference": {
+    "checkpoint": "checkpoints/last.pt",
+    "selected": "selected.json"
+  },
+  "run_if": "E17's val sweep: the selected variant's net rescue has its 95% CI upper end below 0 (FingerGAN still fails zero-shot); chain.sh checks this before training"
+}

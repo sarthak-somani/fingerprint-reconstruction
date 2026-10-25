@@ -1,0 +1,42 @@
+{
+  "diffusion": {
+    "steps": 15,
+    "kappa": 2.0,
+    "min_noise": 0.04,
+    "sqrt_eta_end": 0.99,
+    "power": 0.3,
+    "mask_loss_weight": 1.0,
+    "_source": "ResShift's 15-step config (configs/realsr_swinunet_realesrgan256.yaml). The paper's text says eta_T = 0.999; the code uses sqrt(eta_T) = 0.99. mask_loss_weight 1 = ResShift's plain loss."
+  },
+  "model": {
+    "cond_channels": 4,
+    "base_channels": 32,
+    "channel_mults": [1, 2, 4, 5],
+    "res_blocks": 2,
+    "attention_resolutions": [16],
+    "groups": 8,
+    "_inputs": "x_t (1) + cond: damaged print, mask, cos 2theta, sin 2theta (4)"
+  },
+  "training": {
+    "steps": 100000,
+    "batch_size": 32,
+    "lr": 0.0002,
+    "weight_decay": 0.0,
+    "warmup_steps": 1000,
+    "grad_clip": 1.0,
+    "ema_decay": 0.999,
+    "amp": true,
+    "workers": 28,
+    "seed": 0,
+    "log_every": 100,
+    "checkpoint_every": 5000,
+    "val_patches": 256,
+    "data": "FixedTrainDataset (preprocessing/data/train/damaged/), v2 damage: 6 contaminants, severity 0-0.8"
+  },
+  "inference": {
+    "checkpoint": "checkpoints/last.pt",
+    "sampling_steps": 15,
+    "tile_batch": 64,
+    "seed": 0
+  }
+}

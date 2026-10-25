@@ -1,0 +1,12 @@
+{
+  "method": "MSU-LatentAFIS non-learned enhancement (E04: STFT, Cao et al., TIFS 2020) on the MSU-normalised print, output measured as stored (no second normalisation by the evaluator)",
+  "data_version": "v3",
+  "output_normalized": true,
+  "texture_sigma": 2.5,
+  "block": 16,
+  "_normalization": "input = fpr.data.normalization.normalize(degraded); output = STFT image, measured as stored (evaluate.py --rec-normalized). E04 itself = the same STFT image normalised again by the evaluator",
+  "sweep": {
+    "variants": {"as_stored": true, "renormalised": false},
+    "_note": "sweep.py writes the val repairs once and evaluates them both ways (value = --rec-normalized). 'renormalised' is E04's protocol (numerically E04); the test run happens only if 'as_stored' wins on val"
+  }
+}

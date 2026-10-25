@@ -1,0 +1,15 @@
+{
+  "init": "e02_x0",
+  "t0": 11,
+  "project": true,
+  "val": {
+    "eer": 0.16053618345534781,
+    "genuine_mean": 43.50253807106599,
+    "impostor_p95": 14.0
+  },
+  "plain_e02_val": {
+    "eer": 0.16353340305588857,
+    "genuine_mean": 43.35532994923858,
+    "impostor_p95": 14.0
+  }
+}

@@ -1,0 +1,15 @@
+{
+ "experiment": "E03_fingergan",
+ "device": "cuda",
+ "device_name": "NVIDIA A40",
+ "n_prints": 50,
+ "warmup": 3,
+ "seconds_median": 1.1616827668622136,
+ "seconds_p90": 1.569918183516711,
+ "seconds_mean": 1.2237517445068806,
+ "peak_gpu_mb": 3598.27392578125,
+ "peak_ram_mb": 1025.1015625,
+ "parameters": 33867137,
+ "date": "2026-10-23 13:29",
+ "host": "cn29-a40.prajna.iitb.ac.in"
+}

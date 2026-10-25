@@ -1,0 +1,15 @@
+{
+ "experiment": "E23_ccdf_aux_cv_edge_mix",
+ "device": "cuda",
+ "device_name": "NVIDIA A40",
+ "n_prints": 50,
+ "warmup": 3,
+ "seconds_median": 0.7003462124848738,
+ "seconds_p90": 1.1017618575831876,
+ "seconds_mean": 0.736450961146038,
+ "peak_gpu_mb": 681.6162109375,
+ "peak_ram_mb": 1042.80078125,
+ "parameters": 8103937,
+ "date": "2026-10-24 14:50",
+ "host": "cn33-a40.prajna.iitb.ac.in"
+}

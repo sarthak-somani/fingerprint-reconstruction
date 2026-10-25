@@ -1,0 +1,15 @@
+{
+ "experiment": "E04_msu_stft",
+ "device": "cpu",
+ "device_name": "AMD EPYC 7313 16-Core Processor, 8 threads",
+ "n_prints": 50,
+ "warmup": 3,
+ "seconds_median": 0.22003130055963993,
+ "seconds_p90": 0.4028200139757246,
+ "seconds_mean": 0.283245960874483,
+ "peak_gpu_mb": null,
+ "peak_ram_mb": 571.89453125,
+ "parameters": 0,
+ "date": "2026-10-23 13:29",
+ "host": "cn29-a40.prajna.iitb.ac.in"
+}

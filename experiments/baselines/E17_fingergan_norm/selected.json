@@ -1,0 +1,6 @@
+{
+  "label": "norm_s1.5_pb",
+  "input": "norm",
+  "render_sigma": 1.5,
+  "paste_back": true
+}

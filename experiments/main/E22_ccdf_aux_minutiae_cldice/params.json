@@ -1,0 +1,35 @@
+{
+  "method": "E07_aux_minutiae_cldice's trained ResShift (raw v2 prints, plain diffusion loss + minutiae + clDice terms), sampled CCDF-style with E09_ccdf's sampler (start, t0 and projection chosen on v2 val by E09's grid and rule, without the regression control). No retraining",
+  "model": {
+    "source": "E07_aux_minutiae_cldice",
+    "checkpoint": "experiments/main/E07_aux_minutiae_cldice/checkpoints/last.pt",
+    "params": "experiments/main/E07_aux_minutiae_cldice/params.json",
+    "_note": "E07's EMA weights at step 100,000, used as they are. Network and schedule are E02's (checked by reconstructor.py)"
+  },
+  "sweep": {
+    "inits": [
+      "e02_x0",
+      "y0"
+    ],
+    "t0": [
+      2,
+      4,
+      8,
+      11
+    ],
+    "project": [
+      false,
+      true
+    ],
+    "tile_batch": 64,
+    "seed": 0,
+    "workers": 16,
+    "_note": "E09's grid (params.json 'sweep') minus the regression-control start; e02_x0 = the model's own one-call x0 estimate at t = T. Also scored: plain (y0, t0 = 15, no projection = the model's usual 15-step chain), the reference of the rule",
+    "selection": "E09's rule (fpr/validation/ccdf_sweep.py select): highest mean genuine bozorth3 score on v2 val, among configs whose impostor p95 is not above plain's and whose val EER is at most plain's + 1 point; ties -> fewer steps"
+  },
+  "inference": {
+    "selected": "selected.json",
+    "tile_batch": 64,
+    "seed": 0
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "method": "FingerGAN (Zhu, Yin & Hu, TPAMI 2023), released weights, zero-shot (E03's network and windows), on MSU-normalised input, with its ridge map rendered as a normalised print",
+  "data_version": "v3",
+  "output_normalized": true,
+  "_normalization": "input = fpr.data.normalization.normalize(degraded) (sigma 2.5, the evaluator's normalisation) instead of E03's sigma-6 texture of the raw print; output = the ridge map, Gaussian-blurred by render_sigma and normalize()d, measured as stored (evaluate.py --rec-normalized)",
+  "weights": "weights/FingerGAN_25850831.tar",
+  "_weights": "relative to experiments/baselines/E03_fingergan/ (E03's download, not copied)",
+  "window": 192,
+  "step": 10,
+  "batch": 48,
+  "invert": false,
+  "_invert": "polarity checked again on 40 v2 val prints: E03's raw ridge map correlates +0.53 with the normalised clean print (band-passed, local NCC), its inverse -0.53, so its bright lines lie on the valleys as in a normalised print; no inversion",
+  "sweep": {
+    "variants": {
+      "tex6_s0":    {"input": "texture6", "render_sigma": 0,   "paste_back": false},
+      "tex6_s1.5":  {"input": "texture6", "render_sigma": 1.5, "paste_back": false},
+      "norm_s0":    {"input": "norm",     "render_sigma": 0,   "paste_back": false},
+      "norm_s1.5":  {"input": "norm",     "render_sigma": 1.5, "paste_back": false},
+      "norm_s1.5_pb": {"input": "norm",   "render_sigma": 1.5, "paste_back": true}
+    },
+    "_note": "tex6_s0 reproduces E03 under the v3 evaluator (sanity check); tex6 vs norm isolates the input change, s0 vs s1.5 the rendering (sigma 1.5 was the best of 1, 1.5, 2, 3 for E03's own maps on 40 v2 val prints: ridge fidelity in the mask 0.50 -> 0.58), _pb the paste-back. Selection: highest net rescue among gate passes, ties -> ridge fidelity (val_sweep.choose)"
+  },
+  "inference": {
+    "selected": "selected.json",
+    "default": {"input": "norm", "render_sigma": 1.5, "paste_back": false}
+  }
+}

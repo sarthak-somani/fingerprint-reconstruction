@@ -1,0 +1,33 @@
+{
+  "method": "MSU-LatentAFIS enhancement autoencoder (E05's network, Model.reconstruction2), trained on our damaged -> clean pairs in the MSU-normalised domain (v3 train set)",
+  "data_version": "v3",
+  "output_normalized": true,
+  "_normalization": "input = fpr.data.normalization.normalize(degraded) (the evaluator's own normalisation, texture sigma 2.5); target = the normalised clean print; output measured as stored (evaluate.py --rec-normalized)",
+  "model": {
+    "nf": 16,
+    "_source": "E05_msu_aec/model.py (MSU Model.reconstruction2), unchanged: 0.65M parameters, no skip connections"
+  },
+  "training": {
+    "steps": 30000,
+    "batch_size": 128,
+    "windows_per_sample": 8,
+    "patch": 128,
+    "lr": 0.0001,
+    "betas": [0.5, 0.9],
+    "workers": 24,
+    "seed": 0,
+    "log_every": 100,
+    "checkpoint_every": 5000,
+    "val_patches": 256,
+    "data": "NormPairs (pairs.py) = FixedTrainDataset(normalized=True) windows on v3: 6,308 crops x 6 contaminants x 3 copies = 113,544 samples",
+    "_source": "batch (in windows), patch, optimiser and L2 loss as E05 (MSU's recipe); only the training pairs change. 30k steps instead of E05's 50k, and 8 windows per loaded sample (16 samples x 8 = 128 windows a step): PNG loading, not the 0.65M-parameter network, set the speed (1 s a step with one window per sample, 2026-10-23 job 362303)"
+  },
+  "inference": {
+    "checkpoint": "checkpoints/last.pt",
+    "selected": "selected.json"
+  },
+  "sweep": {
+    "paste_back": [false, true],
+    "_note": "sweep.py repairs v3 val both ways and keeps the higher net rescue (score 1), ties -> higher ridge fidelity; false is the baselines' agreed protocol (whole print)"
+  }
+}

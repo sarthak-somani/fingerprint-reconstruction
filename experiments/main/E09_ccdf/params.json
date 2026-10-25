@@ -1,0 +1,39 @@
+{
+  "method": "CCDF (Chung, Sim & Ye, CVPR 2022) on E02_resshift: forward-diffuse a starting estimate to t0 < T in one jump, run E02's reverse chain from t0, optionally with a data-consistency projection at every step",
+  "e02": {
+    "checkpoint": "experiments/main/E02_resshift/checkpoints/last.pt",
+    "final_step": 100000,
+    "wait_hours": 6,
+    "_note": "train.py waits until E02's v2 run has saved its final step"
+  },
+  "regressor": {
+    "steps": 30000,
+    "batch_size": 32,
+    "lr": 0.0002,
+    "warmup_steps": 1000,
+    "grad_clip": 1.0,
+    "ema_decay": 0.999,
+    "amp": true,
+    "workers": 16,
+    "seed": 0,
+    "log_every": 100,
+    "checkpoint_every": 5000,
+    "val_patches": 256,
+    "_note": "deterministic control: E02's U-Net (same size and inputs), x_t channel = y0, t = 0, L1 to the clean patch; FixedTrainDataset (v2), E02's optimiser settings"
+  },
+  "sweep": {
+    "inits": ["regressor", "e02_x0", "y0"],
+    "t0": [2, 4, 8, 11],
+    "project": [false, true],
+    "tile_batch": 64,
+    "seed": 0,
+    "workers": 16,
+    "_note": "also scored: regressor alone (t0 = 0) and plain E02 (y0, t0 = 15, no projection) as references",
+    "selection": "highest mean genuine bozorth3 score (probe vs its own slap print) on val, among configs whose impostor p95 is not above plain E02's and whose val EER is at most plain E02's + 1 point; ties -> fewer steps"
+  },
+  "inference": {
+    "selected": "selected.json",
+    "tile_batch": 64,
+    "seed": 0
+  }
+}

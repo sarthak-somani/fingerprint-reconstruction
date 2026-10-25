@@ -1,0 +1,15 @@
+{
+ "experiment": "E07_aux_minutiae_cldice",
+ "device": "cuda",
+ "device_name": "NVIDIA A40",
+ "n_prints": 50,
+ "warmup": 3,
+ "seconds_median": 0.8295273242983967,
+ "seconds_p90": 1.272370931180194,
+ "seconds_mean": 0.8787344446778298,
+ "peak_gpu_mb": 678.1044921875,
+ "peak_ram_mb": 969.80859375,
+ "parameters": 8103937,
+ "date": "2026-10-23 13:34",
+ "host": "cn29-a40.prajna.iitb.ac.in"
+}

@@ -1,0 +1,5 @@
+{
+  "method": "gabor",
+  "kwargs": {},
+  "notes": "Classical baseline; settings are the GABOR_* constants in config.py."
+}

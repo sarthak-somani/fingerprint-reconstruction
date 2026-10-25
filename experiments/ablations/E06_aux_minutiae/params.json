@@ -1,0 +1,61 @@
+{
+  "diffusion": {
+    "steps": 15,
+    "kappa": 2.0,
+    "min_noise": 0.04,
+    "sqrt_eta_end": 0.99,
+    "power": 0.3,
+    "mask_loss_weight": 1.0,
+    "_source": "ResShift's 15-step config (configs/realsr_swinunet_realesrgan256.yaml). The paper's text says eta_T = 0.999; the code uses sqrt(eta_T) = 0.99. mask_loss_weight 1 = ResShift's plain loss."
+  },
+  "model": {
+    "cond_channels": 4,
+    "base_channels": 32,
+    "channel_mults": [
+      1,
+      2,
+      4,
+      5
+    ],
+    "res_blocks": 2,
+    "attention_resolutions": [
+      16
+    ],
+    "groups": 8,
+    "_inputs": "x_t (1) + cond: damaged print, mask, cos 2theta, sin 2theta (4)"
+  },
+  "training": {
+    "steps": 100000,
+    "batch_size": 32,
+    "lr": 0.0002,
+    "weight_decay": 0.0,
+    "warmup_steps": 1000,
+    "grad_clip": 1.0,
+    "ema_decay": 0.999,
+    "amp": true,
+    "workers": 28,
+    "seed": 0,
+    "log_every": 100,
+    "checkpoint_every": 5000,
+    "val_patches": 256,
+    "data": "FixedTrainDataset (preprocessing/data/train/damaged/), v2 damage: 6 contaminants, severity 0-0.8; + minutiae maps (preprocessing/data/train/minutiae_w/, script 09)"
+  },
+  "inference": {
+    "checkpoint": "checkpoints/last.pt",
+    "sampling_steps": 15,
+    "tile_batch": 64,
+    "seed": 0
+  },
+  "aux_losses": {
+    "minutiae": 0.22
+  },
+  "aux": {
+    "dilate_px": 4,
+    "eta_max": 0.5,
+    "lam_m": 4.0,
+    "minutiae_dir": "preprocessing/data/train/minutiae_w",
+    "cldice_tau": 0.05,
+    "cldice_iters": 4,
+    "_note": "aux_losses maps each term (fpr.training.aux_losses.TERMS) to lam, or to {lam, <arguments>}; lam is calibrated with train.py --calibrate 20 to ~20% of L_diff at init. The terms act inside the damage mask grown by dilate_px, at steps with eta_t <= eta_max (t = 1..11); minutiae weight w = 1 + lam_m * w_norm."
+  }
+}

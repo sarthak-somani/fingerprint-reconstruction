@@ -1,0 +1,43 @@
+{
+  "method": "CTMSR Stage 2 (You et al., ICCV 2025): E10_ctmsr fine-tuned with Distribution Trajectory Matching (DTM) + the CT loss",
+  "init": "experiments/one_step/E10_ctmsr/checkpoints/last.pt",
+  "consistency": {
+    "sigma_max": 1.0,
+    "s0": 4,
+    "s1": 3,
+    "_source": "as E10; the CT loss keeps E10's final curriculum value, T = s1 = 3 intervals"
+  },
+  "dtm": {
+    "iterations": 2000,
+    "lr": 5e-05,
+    "lambda_ct": 1.0,
+    "lambda_dtm": 1.6,
+    "grid_index": 1,
+    "refresh_every": 1000,
+    "_source": "paper 4.1 + supp. A.3-A.4 and options/train/ctmsr_train.yml (dtm_iter 2000, lr 5e-5, weight 1.6, t_min 0.1 / t_max 0.5 of 3 + 1 grid points -> index 1, i.e. sigma = alpha = 1/3; frozen copy refreshed every 1000 iterations; 'improved' weight 1 / mean|x_hat0 - x0|)"
+  },
+  "model": {
+    "cond_channels": 4,
+    "base_channels": 32,
+    "channel_mults": [1, 2, 4, 5],
+    "res_blocks": 2,
+    "attention_resolutions": [16],
+    "groups": 8
+  },
+  "training": {
+    "batch_size": 32,
+    "betas": [0.9, 0.9],
+    "grad_clip": 1.0,
+    "ema_decay": 0.999,
+    "amp": true,
+    "workers": 8,
+    "seed": 1,
+    "log_every": 100,
+    "val_patches": 256
+  },
+  "inference": {
+    "checkpoint": "checkpoints/last.pt",
+    "tile_batch": 64,
+    "seed": 0
+  }
+}

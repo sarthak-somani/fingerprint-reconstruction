@@ -1,0 +1,64 @@
+{
+  "batches": 20,
+  "batch_size": 32,
+  "device": "cpu",
+  "data_version": "v2",
+  "l_diff_mean": 0.4755373612046242,
+  "mean_n_gated": 22.85,
+  "terms": {
+    "minutiae": {
+      "lam": 1.0,
+      "raw_mean_over_gated": 0.4277830123901367,
+      "ratio_to_l_diff": 0.8995781347368441,
+      "lam_for_20_percent": 0.22
+    }
+  },
+  "all_finite": true,
+  "sec_per_step": 31.56371912956238,
+  "aux_losses": {
+    "minutiae": 1.0
+  },
+  "aux": {
+    "dilate_px": 4,
+    "eta_max": 0.5,
+    "lam_m": 4.0,
+    "minutiae_dir": "preprocessing/data/train/minutiae_w",
+    "cldice_tau": 0.05,
+    "cldice_iters": 4,
+    "_note": "aux_losses maps each term (fpr.training.aux_losses.TERMS) to lam, or to {lam, <arguments>}; lam is calibrated with train.py --calibrate 20 to ~20% of L_diff at init. The terms act inside the damage mask grown by dilate_px, at steps with eta_t <= eta_max (t = 1..11); minutiae weight w = 1 + lam_m * w_norm."
+  },
+  "first_batch_sample_ids": [
+    "00002483_V_500_roll_04_sanitizer",
+    "00002339_M_500_plain_01_scar",
+    "00002443_U_500_roll_03_pressure",
+    "00002484_V_500_roll_07_mehendi",
+    "00002458_K_500_plain_02_mehendi",
+    "00002612_K_500_plain_10_oil",
+    "00002501_V_500_roll_09_pressure",
+    "00002437_K_500_plain_09_oil",
+    "00002418_L_500_plain_07_mehendi",
+    "00002640_M_500_plain_09_oil",
+    "00002440_L_500_plain_10_lotion",
+    "00002303_P_500_plain_08_scar",
+    "00002504_U_500_roll_09_pressure",
+    "00002362_V_500_roll_02_sanitizer",
+    "00002584_K_500_plain_04_mehendi",
+    "00002634_L_500_plain_03_lotion",
+    "00002646_K_500_plain_07_pressure",
+    "00002480_U_500_roll_08_lotion",
+    "00002383_L_500_plain_09_sanitizer",
+    "00002368_L_500_plain_10_lotion",
+    "00002304_U_500_roll_09_oil",
+    "00002586_U_500_roll_03_scar",
+    "00002510_K_500_plain_04_scar",
+    "00002586_M_500_plain_06_sanitizer",
+    "00002574_U_500_roll_05_scar",
+    "00002392_M_500_plain_06_lotion",
+    "00002437_K_500_plain_10_oil",
+    "00002443_L_500_plain_03_sanitizer",
+    "00002434_M_500_plain_05_lotion",
+    "00002391_U_500_roll_10_pressure",
+    "00002338_M_500_plain_01_lotion",
+    "00002515_K_500_plain_04_mehendi"
+  ]
+}

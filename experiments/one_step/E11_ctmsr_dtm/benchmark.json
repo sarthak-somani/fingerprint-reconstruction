@@ -1,0 +1,15 @@
+{
+ "experiment": "E11_ctmsr_dtm",
+ "device": "cuda",
+ "device_name": "NVIDIA A40",
+ "n_prints": 50,
+ "warmup": 3,
+ "seconds_median": 0.3988971905782819,
+ "seconds_p90": 0.6281622040085495,
+ "seconds_mean": 0.4830516691692173,
+ "peak_gpu_mb": 675.10595703125,
+ "peak_ram_mb": 1018.984375,
+ "parameters": 8103937,
+ "date": "2026-10-23 13:39",
+ "host": "cn29-a40.prajna.iitb.ac.in"
+}

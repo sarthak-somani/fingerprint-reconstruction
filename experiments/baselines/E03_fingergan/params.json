@@ -1,0 +1,10 @@
+{
+  "method": "FingerGAN (Zhu, Yin & Hu, TPAMI 2023), released weights, zero-shot",
+  "weights": "weights/FingerGAN_25850831.tar",
+  "window": 192,
+  "step": 10,
+  "batch": 48,
+  "texture_sigma": 6,
+  "invert": false,
+  "_source": "experiment/latent_fingerprint_enhancement.py and util/my_data_loader.py in HubYZ/LatentEnhancement (window 192, step 10, batch 48 are its defaults). Weights: Google Drive id 1lS8_wbMjf0_AHYMG4mO_Mrb2TpFVQVTa. Texture sigma 6 as in its README (MSU's Python port of the Buades cartoon-texture decomposition, not the IPOL binary). invert is set by the polarity check (MINDTCT needs dark ridges)."
+}

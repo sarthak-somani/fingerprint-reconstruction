@@ -1,0 +1,15 @@
+{
+ "experiment": "E17_fingergan_norm",
+ "device": "cuda",
+ "device_name": "NVIDIA A40",
+ "n_prints": 50,
+ "warmup": 3,
+ "seconds_median": 1.6887539823073894,
+ "seconds_p90": 2.0650401584338396,
+ "seconds_mean": 1.5027558619808405,
+ "peak_gpu_mb": 3598.27392578125,
+ "peak_ram_mb": 1025.00390625,
+ "parameters": 33867137,
+ "date": "2026-10-24 00:17",
+ "host": "cn21-a40.prajna.iitb.ac.in"
+}

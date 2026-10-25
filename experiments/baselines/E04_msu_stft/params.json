@@ -1,0 +1,6 @@
+{
+  "method": "MSU-LatentAFIS non-learned enhancement (Cao, Nguyen, Tymoszek, Jain, TIFS 2020): cartoon-texture + STFT, zero-shot",
+  "texture_sigma": 2.5,
+  "block": 16,
+  "_source": "extraction/extraction_latent.py L97-98 and extraction/preprocessing.py in prip-lab/MSU-LatentAFIS (MIT)."
+}

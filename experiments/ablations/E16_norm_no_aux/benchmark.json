@@ -1,0 +1,15 @@
+{
+ "experiment": "E16_norm_no_aux",
+ "device": "cuda",
+ "device_name": "NVIDIA A40",
+ "n_prints": 50,
+ "warmup": 3,
+ "seconds_median": 0.5853193735238165,
+ "seconds_p90": 0.8902692357078195,
+ "seconds_mean": 0.6159029080951587,
+ "peak_gpu_mb": 683.4912109375,
+ "peak_ram_mb": 1177.48828125,
+ "parameters": 8103937,
+ "date": "2026-10-24 04:27",
+ "host": "cn35-a40.prajna.iitb.ac.in"
+}

@@ -1,0 +1,15 @@
+{
+ "experiment": "E19_msu_aec_norm",
+ "device": "cuda",
+ "device_name": "NVIDIA A40",
+ "n_prints": 50,
+ "warmup": 3,
+ "seconds_median": 0.22973749041557312,
+ "seconds_p90": 0.23578866878524424,
+ "seconds_mean": 0.16978239276446402,
+ "peak_gpu_mb": 37.13818359375,
+ "peak_ram_mb": 972.34375,
+ "parameters": 647441,
+ "date": "2026-10-24 00:30",
+ "host": "cn21-a40.prajna.iitb.ac.in"
+}
