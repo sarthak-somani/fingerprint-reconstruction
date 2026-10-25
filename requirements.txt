@@ -1,0 +1,18 @@
+# Python >= 3.10. Tested with Python 3.11, torch 2.5.1 (CUDA 12.1) and the versions below.
+numpy>=2.0
+scipy>=1.13
+pandas>=2.2
+opencv-python-headless>=4.10   # same cv2 API as opencv-python, without GUI libraries
+scikit-image>=0.24
+matplotlib>=3.9
+pillow>=10.0
+tqdm>=4.66
+torch>=2.5
+torchvision>=0.20              # AlexNet backbone for LPIPS
+lpips>=0.1.4
+huggingface_hub>=0.25          # SegFormer encoder weights (nvidia/mit-b0)
+gradio>=5.0                    # demo/
+pytest>=8.0
+# Optional:
+# gdown                        # FingerGAN's released weights for E03/E17/E20 (see experiments/README.md)
+# transformers                 # segmenter/clipseg_zero_shot.py and one segmenter test (needs torch >= 2.6)
