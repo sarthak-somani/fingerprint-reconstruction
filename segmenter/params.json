@@ -1,0 +1,44 @@
+{
+  "model": {
+    "name": "SegFormer-B0 (Xie et al., NeurIPS 2021), 3.7M parameters",
+    "pretrained_encoder": "nvidia/mit-b0",
+    "num_labels": 1,
+    "threshold": 0.5,
+    "checkpoint": "checkpoints/best.pt"
+  },
+  "training": {
+    "steps": 20000,
+    "batch_size": 16,
+    "patch": 320,
+    "lr": 6e-05,
+    "weight_decay": 0.01,
+    "warmup_steps": 500,
+    "workers": 16,
+    "seed": 0,
+    "log_every": 100,
+    "val_every": 2000,
+    "_source": "SegFormer's fine-tuning recipe (AdamW, lr 6e-5, head x10, poly decay); 320 px windows from FixedTrainDataset (90% on damage). Validation: pooled Dice on the full v2 val probes."
+  },
+  "zero_shot": {
+    "segformer": "nvidia/segformer-b0-finetuned-ade-512-512",
+    "clipseg": "CIDAS/clipseg-rd64-refined",
+    "clipseg_prompts": [
+      "a stain",
+      "a smudge",
+      "a scar",
+      "a dark smear",
+      "a faded area",
+      "damage"
+    ],
+    "clipseg_thresholds": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7
+    ]
+  },
+  "decision": "Zero-shot is good enough only if its oracle upper bound reaches pooled Dice >= 0.5 on all probes, >= 0.3 on every contaminant, and beats the 'foreground' floor (whole finger = damage) by >= 0.1 on all probes and on every contaminant. Otherwise fine-tune (on v2)."
+}
