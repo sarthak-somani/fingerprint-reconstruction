@@ -95,11 +95,16 @@ Final models: mean of 9 runs each (3 training seeds × 3 sampler seeds), hierarc
 | Method | Net rescue, points (95% CI) | Gate | Ridge fidelity (95% CI) | s / print |
 |---|---|---|---|---|
 | Damaged print, no repair | 0 | – | 0.826 | – |
-| **E04** MSU-LatentAFIS STFT enhancement (main baseline) | +2.18 [+0.34, +4.10] | pass | 0.820 [0.813, 0.827] | 0.22 (CPU) |
+| **E20** FingerGAN fine-tuned on our data (**main baseline**, single run) | +2.8 [+1.2, +4.5] | pass | 0.846 | 1.30 (A40) |
+| **E04** MSU-LatentAFIS STFT enhancement (best published baseline, used as released) | +2.18 [+0.34, +4.10] | pass | 0.820 [0.813, 0.827] | 0.22 (CPU) |
 | **E09** ResShift + CCDF (final) | **+5.45** [+3.86, +7.12] | 9 / 9 pass | **0.943** [0.939, 0.946] | 0.48 (A40) |
 | **E22** ResShift + minutiae/clDice losses + CCDF (final) | **+5.61** [+4.07, +7.25] | 9 / 9 pass | **0.943** [0.940, 0.946] | 0.43 (A40) |
 
-- **Both final models beat the E04 baseline on every seed** (9 / 9 runs, 3 / 3 training seeds, on both scores):
+- **Against the main baseline E20** (single reference runs, [comparison, 325 pairs, Holm-adjusted](evaluation/results/comparison/v3/test/comparison.md)):
+  ridge fidelity +0.097 [+0.093, +0.101] for both E09 and E22, significant (p ≈ 2e-64); net rescue E09 − E20 = +2.4 [+0.8, +4.2]
+  and E22 − E20 = +3.2 [+1.5, +4.9] points, whose CIs exclude 0 but which are not significant after Holm correction over all
+  325 pairs (adjusted p 1.000 and 0.094).
+- **Both final models beat the published E04 baseline on every seed** (9 / 9 runs, 3 / 3 training seeds, on both scores):
   E09 − E04 = +3.28 points [+1.67, +4.99], E22 − E04 = +3.43 [+1.79, +5.18]; ridge fidelity +0.123 for both.
 - **E09 and E22 are tied:** E22 − E09 = +0.16 points [−0.72, +1.00] and +0.0002 ridge fidelity [−0.0005, +0.0009].
   E22 is slightly cheaper.

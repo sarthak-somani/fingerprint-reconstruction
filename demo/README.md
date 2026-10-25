@@ -2,7 +2,7 @@
 
 A Gradio page: pick a test print (or upload a 500 ppi print), damage it (the stored test damage, stacked
 contaminants, or a smudge you draw), give the model the true mask or the one the segmenter predicts, and compare
-up to two models (default E09 vs the E04 baseline; E22, E02, E20 and E12 are offered when their files exist).
+up to two models (default E09 vs the main baseline E20; E22, E02, E04 and E12 are offered when their files exist).
 It shows the clean, damaged and repaired prints with |repaired − clean| heat maps, and scores each version the
 way `evaluation/evaluate.py` does: BOZORTH3 against the clean slap print (MATCH when the score exceeds the
 evaluator's τ), ridge fidelity and PSNR in the damage mask, repair time. Needs the test set, the checkpoints

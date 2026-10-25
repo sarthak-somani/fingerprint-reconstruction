@@ -54,7 +54,7 @@ with gr.Blocks(title="Halluci-Nation fingerprint repair") as demo:
             mask_source = gr.Radio(damage.MASK_SOURCES, value=damage.TRUE_MASK, label="Damage mask given to the model")
             model_a = gr.Dropdown(model_choices(True), value=models.DEFAULT_MODEL, label="Model A")
             model_b = gr.Dropdown(model_choices(False), label="Model B (side by side)",
-                                  value="E04_msu_stft" if "E04_msu_stft" in MODELS else handlers.NO_MODEL)
+                                  value="E20_fingergan_finetune" if "E20_fingergan_finetune" in MODELS else handlers.NO_MODEL)
             run_button = gr.Button("Damage and repair", variant="primary")
         with gr.Column(scale=1):
             editor = gr.ImageEditor(type="numpy", image_mode="RGBA", format="png", label="Draw a smudge here "

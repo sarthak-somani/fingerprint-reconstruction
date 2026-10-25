@@ -17,8 +17,8 @@ CANDIDATES = {                          # dropdown order; label shown next to th
     "E09_ccdf": "best (tied): ResShift + CCDF sampling",
     "E22_ccdf_aux_minutiae_cldice": "best (tied): ResShift + minutiae/clDice losses + CCDF",
     "E02_resshift": "ResShift diffusion, 15 steps",
-    "E04_msu_stft": "baseline: MSU STFT enhancement (no learning)",
-    "E20_fingergan_finetune": "baseline: FingerGAN fine-tuned on our data",
+    "E04_msu_stft": "published baseline: MSU STFT enhancement (no learning)",
+    "E20_fingergan_finetune": "main baseline: FingerGAN fine-tuned on our data",
     "E12_norm_ccdf_cldice_cv": "ResShift on normalised prints + clDice/edge losses, CCDF",
 }
 
